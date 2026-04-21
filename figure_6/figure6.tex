@@ -1,0 +1,63 @@
+\documentclass{minimal}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, shapes.misc}
+\usetikzlibrary{calc}
+\usetikzlibrary{external}
+\usetikzlibrary{backgrounds}
+
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.8}
+\usepgfplotslibrary{statistics}
+
+\definecolor{colorMid}{RGB}{168,221,181}
+\definecolor{colorDark}{RGB}{67,162,202}
+
+\input{boxplots.tex}
+
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+		boxplot/draw direction=y,
+		grid=both,
+		 xlabel={True Distance (m)},
+		 ylabel={Measured Distance},
+		 xtick={5,6,7,8,9,10,11,12,13,14,15},
+		 height=10cm,
+		 width=\axisdefaultwidth,
+		 % every axis plot/.append style = {line width=0.7pt}
+	]
+	% For every change to the csv, add one \relax here.
+	% Don't remove them: they're how we tell tikzexternalize to rebuild this figure if just csv changes.
+	\relax
+	\pgfplotstableread[col sep=comma,header=has colnames]{figure6.csv}\datatable
+	\pgfplotstablegetrowsof{\datatable}
+	\pgfmathtruncatemacro\TotalRows{\pgfplotsretval-1}
+	\pgfplotsinvokeforeach{0,...,\TotalRows}
+	{
+		\pgfplotstablegetelem{#1}{x}\of\datatable
+		\let\asdf=\pgfplotsretval
+		\addplot+[
+			boxplot prepared from table={
+				table=\datatable,
+				row=#1,
+				lower whisker=lw,
+				upper whisker=uw,
+				lower quartile=lq,
+				upper quartile=uq,
+				median=med
+			},
+			color=black,
+			fill=colorMid,
+			style=solid,
+			boxplot prepared={draw position=\asdf},
+			% to get a more useful legend
+			area legend,
+			]
+			coordinates {};
+
+			% add legend entry
+			%\addlegendentryexpanded{\pgfplotsretval}
+	}
+	\end{axis}
+	\end{tikzpicture}
+\end{document}

@@ -1,0 +1,49 @@
+\documentclass{minimal}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, shapes.misc}
+\usetikzlibrary{calc}
+\usetikzlibrary{external}
+\usetikzlibrary{backgrounds}
+
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.8}
+\usepgfplotslibrary{statistics}
+
+\definecolor{colorMid}{RGB}{168,221,181}
+\definecolor{colorDark}{RGB}{67,162,202}
+
+\input{boxplots.tex}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+	 ybar stacked,
+	 bar width=8pt,
+	 ymin=0,
+	 ymax=1.0,
+	 xlabel={True Distance (m)},
+	 ylabel={Decision Rate},
+	 enlarge x limits=0.15,
+	 xtick=data,
+	 legend style={at={(0.5,-0.15)},anchor=north,legend columns=-1},
+]
+
+\pgfplotstableread[col sep=comma, header=has colnames]{figure7.csv}\datatable
+
+% Create rejection column = 100 - acceptance
+\pgfplotstablecreatecol[
+	 create col/expr={1.0-\thisrow{acceptance}}
+]{rejection}{\datatable}
+
+% Acceptance (lower part)
+\addplot [fill=colorMid]table[x=distance,y=acceptance]{\datatable};
+
+% Rejection (upper part)
+\addplot [fill=colorDark]table[x=distance,y=rejection]{\datatable};
+
+\legend{Acceptance Rate, Rejection Rate}
+
+\end{axis}
+\end{tikzpicture}
+
+\end{document}
