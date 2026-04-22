@@ -11,7 +11,7 @@ Repository: https://github.com/tum-itsec/timestamps-unchained-data
 Data generators: https://github.com/tum-itsec/timestamps-unchained
 
 C) Hardware Info
-[Here you should include any details and comments about the hardware used, in order to be able to accommodate the reproducibility effort. Any information about non-standard hardware should also be included. You should also include at least the following info:]
+(These are not strict requirements; just the machine we tested this VM on. Shouldn't really matter as our work is not very resource-intensive.)
 C1) CPU: x86_64 Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz
 C2) Caches:
 	L1d:                       128 KiB (4 instances)
@@ -29,6 +29,10 @@ The scripts in the VM demonstrate how this raw data is evaluated to results that
 figures contained in our work.
 Should you wish to recreate our physical experiments we also provide access to the source code that needs to be flashed on the 
 target platform (ESP32-C3) [see B) Data generators].
+For artifact evaluation purposes, we also provide SSH access to a remote machine with two phyiscal ESP32-C3 boards connected.
+Credentials for this physical machine can be found inside the VM (just do `ssh timestampsunchained-eval`)
+and also have been provided to artifact evaluaters via OSF.
+For support with the VM or the remote machine, please do not hesitate to contact us at daniel.kirschten@tum.de.
 
 D1) VM Credentials: wisec (pwd: 1234567), root (pwd: 1234567)
 D2) Figure 6: enter /home/wisec/figure6 and run ./eval_experiment1.py -> raw data (contained in subdirectory) is processed in two stages to figure6.csv and then plotted into figure6.pdf
