@@ -3,7 +3,7 @@ README for reproducibility submission of paper ID #95
 A) Source code info
 Repository: https://github.com/tum-itsec/timestamps-unchained-data
 List of Programming Languages: python, latex
-Compiler Info: python 3.13.12, pdftex 3.14
+Compiler Info: python 3.13.12, pdftex 3.141592653-2.6-1.40.29
 Packages/Libraries Needed: matplotlib, atril, texlive-latex-base texlive-latex-recommended texlive-pictures texlive-latex-extra
 
 B) Datasets info
