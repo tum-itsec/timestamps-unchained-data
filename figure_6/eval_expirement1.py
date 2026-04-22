@@ -46,6 +46,7 @@ def main():
     subprocess.run(["./n-party-presence-plotter.py"] + ['BOX', 'ignored'] + [f"processed_fig6/{f}" for f in processed_data_1]) 
 
     # Build figure using latex
+    makedirs("latex", exist_ok=True)
     subprocess.run(['pdflatex', '-output-directory', 'latex', 'figure6.tex']) 
     shutil.copyfile('latex/figure6.pdf', 'figure6.pdf')
     subprocess.Popen(['atril', 'figure6.pdf'])

@@ -49,6 +49,7 @@ def main():
     subprocess.run(["./n-party-presence-ugly-plotter.py"] + ['BAR', f'{cutoff}'] + [f"processed_fig7/{f}" for f in processed_data_2]) 
 
     # Build figure using latex
+    makedirs("latex", exist_ok=True)
     subprocess.run(['pdflatex', '-output-directory', 'latex', 'figure7.tex']) 
     shutil.copyfile('latex/figure7.pdf', 'figure7.pdf')
     subprocess.Popen(['atril', 'figure7.pdf'])
