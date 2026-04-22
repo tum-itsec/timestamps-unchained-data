@@ -29,9 +29,8 @@ The scripts in the VM demonstrate how this raw data is evaluated to results that
 figures contained in our work.
 Should you wish to recreate our physical experiments we also provide access to the source code that needs to be flashed on the 
 target platform (ESP32-C3) [see B) Data generators].
-For artifact evaluation purposes, we also provide SSH access to a remote machine with two phyiscal ESP32-C3 boards connected.
-Credentials for this physical machine can be found inside the VM (just do `ssh timestampsunchained-eval`)
-and also have been provided to artifact evaluaters via OSF.
+For artifact evaluation purposes, we also provide SSH access to a remote machine with phyiscal ESP32-C3 boards connected.
+Credentials for this physical machine can be found inside the VM (just do `ssh timestampsunchained-eval`) and also have been provided to artifact evaluaters.
 For support with the VM or the remote machine, please do not hesitate to contact us at daniel.kirschten@tum.de.
 
 D1) VM Credentials: wisec (pwd: 1234567), root (pwd: 1234567)
