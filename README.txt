@@ -27,11 +27,14 @@ D) Experimentation Info
 NOTE: In the VM we provide the data that was collected during the experimentation phase described in the paper.
 The scripts in the VM demonstrate how this raw data is evaluated to results that are then automatically plotted into the 
 figures contained in our work.
+
 Should you wish to recreate our physical experiments we also provide access to the source code that needs to be flashed on the 
 target platform (ESP32-C3) [see B) Data generators].
+
+Evaluation machine:
 For artifact evaluation purposes, we also provide SSH access to a remote machine with phyiscal ESP32-C3 boards connected.
 Credentials for this physical machine can be found inside the VM (just do `ssh timestampsunchained-eval`) and also have been provided to artifact evaluaters.
-For support with the VM or the remote machine, please do not hesitate to contact us at daniel.kirschten@tum.de.
+To ensure your privacy, you can of course use a VPN to connect.
 
 D1) VM Credentials: wisec (pwd: 1234567), root (pwd: 1234567)
 D2) Figure 6: enter /home/wisec/figure6 and run ./eval_experiment1.py -> raw data (contained in subdirectory) is processed in two stages to figure6.csv and then plotted into figure6.pdf
