@@ -2,7 +2,7 @@
 
 import subprocess
 import shutil
-from os import listdir
+from os import listdir, makedirs
 
 # From https://stackoverflow.com/questions/3173320/text-progress-bar-in-terminal-with-block-characters
 # Print iterations progress
@@ -34,6 +34,7 @@ def main():
     raw_data_1 = listdir("raw_data_experiment_1")
 
     # Process raw data of experiment 1
+    makedirs("processed_fig6", exist_ok=True)
     l = len(raw_data_1)
     printProgressBar(0, l, prefix = 'Processing raw data exp1:', suffix = 'Complete', length = 50)
     for i, f in enumerate(raw_data_1):
